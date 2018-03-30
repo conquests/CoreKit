@@ -8,8 +8,6 @@
 
 #if os(iOS) || os(tvOS) || os(macOS)
 
-    import CoreGraphics
-
     public extension AppleLayoutConstraint {
 
         func setMultiplier(multiplier: CGFloat) {

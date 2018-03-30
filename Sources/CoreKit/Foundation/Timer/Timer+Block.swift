@@ -8,8 +8,6 @@
 
 #if os(iOS) || os(tvOS) || os(macOS) || os(watchOS)
 
-    import Foundation.NSTimer
-
     public extension Timer {
 
         @discardableResult

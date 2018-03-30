@@ -14,6 +14,7 @@ class ArrayRandomTests: XCTestCase {
     func test() {
         let sample1: [String] = ["a", "b"]
         let sample2: [String] = []
+        
         let random = sample1.random
 
         XCTAssert(random != nil)

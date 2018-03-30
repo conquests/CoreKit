@@ -7,16 +7,8 @@
 //
 
 #if os(iOS) || os(tvOS)
-
-    import UIKit.UISplitViewController
-
-    public typealias AppleSplitViewController = UISplitViewController
-
+public typealias AppleSplitViewController = UISplitViewController
 #endif
 #if os(macOS)
-
-    import AppKit.NSSplitViewController
-
-    public typealias AppleSplitViewController = NSSplitViewController
-
+public typealias AppleSplitViewController = NSSplitViewController
 #endif

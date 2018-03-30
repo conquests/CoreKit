@@ -8,8 +8,6 @@
 
 #if os(iOS) || os(tvOS)
 
-    import CoreGraphics
-
     public extension AppleViewController {
 
         private static var DimTag: Int = 6_580_589 //dim string in decimal

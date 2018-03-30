@@ -8,8 +8,6 @@
 
 #if os(iOS) || os(tvOS) || os(macOS)
 
-    import CoreGraphics
-
     public class View: AppleView {
 
         public init() {

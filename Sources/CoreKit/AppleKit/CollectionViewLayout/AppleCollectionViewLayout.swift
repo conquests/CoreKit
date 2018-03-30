@@ -7,16 +7,8 @@
 //
 
 #if os(iOS) || os(tvOS)
-
-    import UIKit.UICollectionView
-
-    public typealias AppleCollectionViewLayout = UICollectionViewLayout
-
+public typealias AppleCollectionViewLayout = UICollectionViewLayout
 #endif
 #if os(macOS)
-
-    import AppKit.NSCollectionView
-
-    public typealias AppleCollectionViewLayout = NSCollectionViewLayout
-
+public typealias AppleCollectionViewLayout = NSCollectionViewLayout
 #endif

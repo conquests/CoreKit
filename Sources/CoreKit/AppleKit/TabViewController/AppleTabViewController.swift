@@ -7,9 +7,5 @@
 //
 
 #if os(macOS)
-
-    import AppKit.NSTabViewController
-
-    public typealias AppleTabViewController = NSTabViewController
-
+public typealias AppleTabViewController = NSTabViewController
 #endif

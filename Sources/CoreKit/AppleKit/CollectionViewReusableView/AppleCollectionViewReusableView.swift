@@ -8,16 +8,12 @@
 
 #if os(iOS) || os(tvOS)
 
-    import UIKit.UICollectionView
-
     public typealias AppleCollectionViewReusableView = UICollectionReusableView
 
     public let AppleCollectionElementKindSectionHeader = UICollectionElementKindSectionHeader
     public let AppleCollectionElementKindSectionFooter = UICollectionElementKindSectionFooter
 
 #elseif os(macOS)
-
-    import AppKit.NSCollectionView
 
     public typealias AppleCollectionViewReusableView = NSCollectionViewItem
 

@@ -17,6 +17,6 @@ public extension DispatchQueue {
      - parameter execute block: The code to execute
      */
     public func asyncAfter(delay: Double, execute block: @escaping VoidBlock) {
-        self.asyncAfter(deadline: DispatchTime.now() + delay, execute: block)
+        self.asyncAfter(deadline: .now() + delay, execute: block)
     }
 }

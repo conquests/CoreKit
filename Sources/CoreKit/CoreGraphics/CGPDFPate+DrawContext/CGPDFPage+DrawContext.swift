@@ -6,10 +6,7 @@
 //  Copyright © 2017. Tibor Bödecs. All rights reserved.
 //
 
-#if os(iOS) || os(tvOS)
-
-import CoreGraphics.CGPDFPage
-import UIKit.UIGraphics
+#if os(iOS) || os(tvOS) || os(watchOS)
 
 public extension CGPDFPage {
 

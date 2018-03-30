@@ -7,16 +7,8 @@
 //
 
 #if os(iOS) || os(tvOS)
-
-    import UIKit.UIImageView
-
     public typealias AppleImageView = UIImageView
-
 #endif
 #if os(macOS)
-
-    import AppKit.NSImageView
-
     public typealias AppleImageView = NSImageView
-
 #endif

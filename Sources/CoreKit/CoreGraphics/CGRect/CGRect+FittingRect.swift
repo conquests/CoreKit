@@ -8,8 +8,6 @@
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
-    import CoreGraphics.CGGeometry
-
     public extension CGRect {
 
         /**

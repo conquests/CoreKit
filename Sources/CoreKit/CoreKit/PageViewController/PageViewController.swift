@@ -8,15 +8,13 @@
 
 #if os(iOS) || os(tvOS)
 
-    import UIKit.UIPageViewController
-
     open class PageViewController: ApplePageViewController {
 
         private var scrollViewCache: AppleScrollView!
 
         public lazy var scrollView: AppleScrollView = {
             if self.scrollViewCache == nil {
-                self.scrollViewCache = self.view.subviews.flatMap { $0 as? AppleScrollView }.first
+                self.scrollViewCache = self.view.subviews.compactMap { $0 as? AppleScrollView }.first
             }
             return self.scrollViewCache
         }()

@@ -7,15 +7,29 @@
 //
 
 // swiftlint:disable force_unwrapping line_length
-import Foundation
 
 public struct TimeZoneLocation {
-    public var identifier: String
-    public var latitude: Double
-    public var longitude: Double
+    public let identifier: String
+    public let latitude: Double
+    public let longitude: Double
 
     public var timezone: TimeZone {
         return TimeZone(identifier: self.identifier)!
+    }
+
+    internal init(identifier: String, latitude: Double, longitude: Double) {
+        self.identifier = identifier
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+
+    public init?(identifier: String) {
+        guard let location = TimeZoneLocation.supportedLocations.filter({ $0.identifier == identifier }).first else {
+            return nil
+        }
+        self.identifier = location.identifier
+        self.latitude = location.latitude
+        self.longitude = location.longitude
     }
 }
 
@@ -30,25 +44,18 @@ extension TimeZoneLocation: Equatable {
 
 public extension TimeZoneLocation {
 
-    public static func location(identifier: String) -> TimeZoneLocation? {
-        let zone = TimeZoneLocation.supportedLocations.filter { $0.identifier == identifier }
-        if zone.count == 1 {
-            return zone.first
-        }
-        return nil
-    }
-
     public static var local: TimeZoneLocation {
-        return TimeZoneLocation.location(identifier: NSTimeZone.local.identifier)!
+        return TimeZoneLocation(identifier: NSTimeZone.local.identifier)!
     }
 
     public static var system: TimeZoneLocation {
-        return TimeZoneLocation.location(identifier: NSTimeZone.system.identifier)!
+        return TimeZoneLocation(identifier: NSTimeZone.system.identifier)!
     }
 }
 
 public extension TimeZoneLocation {
 
+    //see: https://www.latlong.net
     public static let supportedLocations: [TimeZoneLocation] = [
         TimeZoneLocation(identifier: "America/Blanc-Sablon", latitude: 51.426_445, longitude: -57.131_315),
         TimeZoneLocation(identifier: "America/Danmarkshavn", latitude: 70.853_066, longitude: -36.867_071_1),
@@ -243,6 +250,7 @@ public extension TimeZoneLocation {
         TimeZoneLocation(identifier: "America/Port_of_Spain", latitude: 10.654_901_3, longitude: -61.501_925_6),
         TimeZoneLocation(identifier: "America/Porto_Velho", latitude: -8.761_160_5, longitude: -63.900_430_3),
         TimeZoneLocation(identifier: "America/Puerto_Rico", latitude: 37.692_772_9, longitude: -108.030_350_2),
+        TimeZoneLocation(identifier: "America/Punta_Arenas", latitude: -53.163_833, longitude: -70.917_068),
         TimeZoneLocation(identifier: "America/Rainy_River", latitude: 29.889_469, longitude: -95.443_030_8),
         TimeZoneLocation(identifier: "America/Recife", latitude: -8.057_838_1, longitude: -34.882_896_9),
         TimeZoneLocation(identifier: "America/Regina", latitude: 36.184_185_5, longitude: -106.956_708_2),
@@ -286,13 +294,16 @@ public extension TimeZoneLocation {
         TimeZoneLocation(identifier: "Asia/Aqtau", latitude: 43.641_097_3, longitude: 51.198_511_3),
         TimeZoneLocation(identifier: "Asia/Aqtobe", latitude: 50.283_933_9, longitude: 57.166_978),
         TimeZoneLocation(identifier: "Asia/Ashgabat", latitude: 37.960_076_6, longitude: 58.326_062_9),
+        TimeZoneLocation(identifier: "Asia/Atyrau", latitude: 47.094_496, longitude: 51.923_837),
         TimeZoneLocation(identifier: "Asia/Baghdad", latitude: 33.312_805_7, longitude: 44.361_487_5),
         TimeZoneLocation(identifier: "Asia/Bahrain", latitude: 26.066_7, longitude: 50.557_7),
         TimeZoneLocation(identifier: "Asia/Baku", latitude: 40.409_261_7, longitude: 49.867_092_4),
         TimeZoneLocation(identifier: "Asia/Bangkok", latitude: 13.756_330_9, longitude: 100.501_765_1),
+        TimeZoneLocation(identifier: "Asia/Barnaul", latitude: 53.354_779, longitude: 83.769_783),
         TimeZoneLocation(identifier: "Asia/Beirut", latitude: 33.888_628_9, longitude: 35.495_479_4),
         TimeZoneLocation(identifier: "Asia/Bishkek", latitude: 42.874_621_2, longitude: 74.569_761_7),
         TimeZoneLocation(identifier: "Asia/Brunei", latitude: 4.535_277, longitude: 114.727_669),
+        TimeZoneLocation(identifier: "Asia/Calcutta", latitude: 22.572_646, longitude: 88.363_895),
         TimeZoneLocation(identifier: "Asia/Chita", latitude: 52.051_503_2, longitude: 113.471_190_6),
         TimeZoneLocation(identifier: "Asia/Choibalsan", latitude: 48.095_127_1, longitude: 114.535_624_7),
         TimeZoneLocation(identifier: "Asia/Chongqing", latitude: 29.563_01, longitude: 106.551_556),
@@ -302,6 +313,7 @@ public extension TimeZoneLocation {
         TimeZoneLocation(identifier: "Asia/Dili", latitude: -8.556_855_7, longitude: 125.560_314_3),
         TimeZoneLocation(identifier: "Asia/Dubai", latitude: 25.204_849_3, longitude: 55.270_782_8),
         TimeZoneLocation(identifier: "Asia/Dushanbe", latitude: 38.559_772_2, longitude: 68.787_038_4),
+        TimeZoneLocation(identifier: "Asia/Famagusta", latitude: 35.114_912, longitude: 33.919_245),
         TimeZoneLocation(identifier: "Asia/Gaza", latitude: 34.047_863, longitude: 100.619_655_3),
         TimeZoneLocation(identifier: "Asia/Harbin", latitude: 45.803_775, longitude: 126.534_967),
         TimeZoneLocation(identifier: "Asia/Hebron", latitude: 31.532_569, longitude: 35.099_826),
@@ -319,7 +331,6 @@ public extension TimeZoneLocation {
         TimeZoneLocation(identifier: "Asia/Kathmandu", latitude: 27.717_245_3, longitude: 85.323_960_5),
         TimeZoneLocation(identifier: "Asia/Katmandu", latitude: 27.717_245_3, longitude: 85.323_960_5),
         TimeZoneLocation(identifier: "Asia/Khandyga", latitude: 62.656_407_9, longitude: 135.553_980_1),
-        TimeZoneLocation(identifier: "Asia/Kolkata", latitude: 22.572_646, longitude: 88.363_895),
         TimeZoneLocation(identifier: "Asia/Krasnoyarsk", latitude: 56.015_283_4, longitude: 92.893_247_6),
         TimeZoneLocation(identifier: "Asia/Kuala_Lumpur", latitude: 3.139_003, longitude: 101.686_855),
         TimeZoneLocation(identifier: "Asia/Kuching", latitude: 1.607_681_2, longitude: 110.378_543_8),
@@ -353,6 +364,7 @@ public extension TimeZoneLocation {
         TimeZoneLocation(identifier: "Asia/Tehran", latitude: 35.689_197_5, longitude: 51.388_973_6),
         TimeZoneLocation(identifier: "Asia/Thimphu", latitude: 27.472_792_4, longitude: 89.639_286_3),
         TimeZoneLocation(identifier: "Asia/Tokyo", latitude: 35.709_025_9, longitude: 139.731_992_5),
+        TimeZoneLocation(identifier: "Asia/Tomsk", latitude: 56.501_040, longitude: 84.992_451),
         TimeZoneLocation(identifier: "Asia/Ulaanbaatar", latitude: 47.886_398_8, longitude: 106.905_743_9),
         TimeZoneLocation(identifier: "Asia/Urumqi", latitude: 43.825_592, longitude: 87.616_848),
         TimeZoneLocation(identifier: "Asia/Ust-Nera", latitude: 64.559_610_3, longitude: 143.224_425_3),
@@ -360,6 +372,7 @@ public extension TimeZoneLocation {
         TimeZoneLocation(identifier: "Asia/Vladivostok", latitude: 43.173_738_7, longitude: 132.006_450_6),
         TimeZoneLocation(identifier: "Asia/Yakutsk", latitude: 62.035_452_3, longitude: 129.675_474_5),
         TimeZoneLocation(identifier: "Asia/Yekaterinburg", latitude: 56.838_926_1, longitude: 60.605_702_5),
+        TimeZoneLocation(identifier: "Asia/Yangon", latitude: 16.866_069, longitude: 96.195_132),
         TimeZoneLocation(identifier: "Asia/Yerevan", latitude: 40.179_185_7, longitude: 44.499_102_9),
         TimeZoneLocation(identifier: "Atlantic/Bermuda", latitude: 37.294_258_9, longitude: -77.304_022),
         TimeZoneLocation(identifier: "Atlantic/Canary", latitude: 39.492_871_8, longitude: -74.505_602_6),
@@ -384,6 +397,7 @@ public extension TimeZoneLocation {
         TimeZoneLocation(identifier: "Europe/Amsterdam", latitude: 52.370_215_7, longitude: 4.895_167_9),
         TimeZoneLocation(identifier: "Europe/Andorra", latitude: 42.506_285, longitude: 1.521_801),
         TimeZoneLocation(identifier: "Europe/Athens", latitude: 37.983_917, longitude: 23.729_359_9),
+        TimeZoneLocation(identifier: "Europe/Astrakhan", latitude: 46.358_804, longitude: 48.059_935),
         TimeZoneLocation(identifier: "Europe/Belgrade", latitude: 44.786_568, longitude: 20.448_921_6),
         TimeZoneLocation(identifier: "Europe/Berlin", latitude: 52.520_006_6, longitude: 13.404_954),
         TimeZoneLocation(identifier: "Europe/Bratislava", latitude: 48.148_596_5, longitude: 17.107_747_7),
@@ -402,6 +416,7 @@ public extension TimeZoneLocation {
         TimeZoneLocation(identifier: "Europe/Jersey", latitude: 49.214_439, longitude: -2.131_25),
         TimeZoneLocation(identifier: "Europe/Kaliningrad", latitude: 54.710_426_4, longitude: 20.452_214_4),
         TimeZoneLocation(identifier: "Europe/Kiev", latitude: 50.450_1, longitude: 30.523_4),
+        TimeZoneLocation(identifier: "Europe/Kirov", latitude: 58.603_532, longitude: 49.666_798),
         TimeZoneLocation(identifier: "Europe/Lisbon", latitude: 38.722_252_4, longitude: -9.139_336_6),
         TimeZoneLocation(identifier: "Europe/Ljubljana", latitude: 46.056_946_5, longitude: 14.505_751_5),
         TimeZoneLocation(identifier: "Europe/London", latitude: 51.507_350_9, longitude: -0.127_758_3),
@@ -421,12 +436,14 @@ public extension TimeZoneLocation {
         TimeZoneLocation(identifier: "Europe/Samara", latitude: 53.241_504_1, longitude: 50.221_246_3),
         TimeZoneLocation(identifier: "Europe/San_Marino", latitude: 43.942_36, longitude: 12.457_777),
         TimeZoneLocation(identifier: "Europe/Sarajevo", latitude: 43.856_258_6, longitude: 18.413_076_3),
+        TimeZoneLocation(identifier: "Europe/Saratov", latitude: 51.592_365, longitude: 45.960_803),
         TimeZoneLocation(identifier: "Europe/Simferopol", latitude: 44.952_117, longitude: 34.102_417),
         TimeZoneLocation(identifier: "Europe/Skopje", latitude: 41.997_346_2, longitude: 21.427_995_6),
         TimeZoneLocation(identifier: "Europe/Sofia", latitude: 42.697_708_2, longitude: 23.321_867_5),
         TimeZoneLocation(identifier: "Europe/Stockholm", latitude: 59.329_323_5, longitude: 18.068_580_8),
         TimeZoneLocation(identifier: "Europe/Tallinn", latitude: 59.436_960_8, longitude: 24.753_574_6),
         TimeZoneLocation(identifier: "Europe/Tirane", latitude: 41.327_545_9, longitude: 19.818_698_2),
+        TimeZoneLocation(identifier: "Europe/Ulyanovsk", latitude: 54.318_160, longitude: 48.383_792),
         TimeZoneLocation(identifier: "Europe/Uzhgorod", latitude: 48.620_8, longitude: 22.287_883),
         TimeZoneLocation(identifier: "Europe/Vaduz", latitude: 47.141_030_3, longitude: 9.520_927_7),
         TimeZoneLocation(identifier: "Europe/Vienna", latitude: 48.208_174_3, longitude: 16.373_818_9),

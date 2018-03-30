@@ -8,9 +8,6 @@
 
 #if os(iOS)
 
-    import CoreGraphics
-    import UIKit.UIMotionEffect
-
     public extension AppleView {
 
         /**

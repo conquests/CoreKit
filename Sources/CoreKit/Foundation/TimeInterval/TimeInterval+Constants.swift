@@ -6,8 +6,6 @@
 //  Copyright © 2017. Tibor Bödecs. All rights reserved.
 //
 
-import Foundation
-
 public extension TimeInterval {
 
     public static var second: TimeInterval { return 1 }

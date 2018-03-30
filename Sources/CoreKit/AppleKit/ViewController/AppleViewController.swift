@@ -8,14 +8,10 @@
 
 #if os(iOS) || os(tvOS)
 
-    import UIKit.UIViewController
-
     public typealias AppleViewController = UIViewController
 
 #endif
 #if os(macOS)
-
-    import AppKit.NSViewController
 
     public typealias AppleViewController = NSViewController
 

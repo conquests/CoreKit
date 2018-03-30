@@ -7,9 +7,5 @@
 //
 
 #if os(iOS) || os(tvOS)
-
-    import UIKit.UITabBarController
-
-    public typealias AppleTabBarController = UITabBarController
-
+public typealias AppleTabBarController = UITabBarController
 #endif

@@ -32,14 +32,9 @@
             self.cornerRadius = cornerRadius
         }
 
-        func border(color: AppleColor = .black, width: CGFloat = .scale) {
+        func border(color: AppleColor = .black, width: CGFloat) {
             self.borderColor = color.cgColor
             self.borderWidth = width
-        }
-
-        func rasterize() {
-            self.shouldRasterize = true
-            self.rasterizationScale = CGFloat.scale
         }
     }
 

@@ -22,6 +22,7 @@ public extension FloatingPoint {
 
     // Reduce angle to within -180..+180 degrees
     public var reduceAngle180: Self {
-        return self - 360 * floor(self / 360 + 1 / 2)
+        let value = self / 360 + 1 / 2
+        return self - 360 * floor(value)
     }
 }

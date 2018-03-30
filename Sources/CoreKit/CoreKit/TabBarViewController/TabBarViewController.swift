@@ -8,10 +8,6 @@
 
 #if os(iOS) || os(tvOS)
 
-    #if os(iOS)
-    import UIKit.UIApplication
-    #endif
-
     open class TabBarViewController: AppleTabBarController {
 
         #if os(iOS)

@@ -8,8 +8,6 @@
 
 #if os(iOS) || os(tvOS) || os(macOS)
 
-    import CoreGraphics
-
     public extension AppleView {
 
         public func leadingAnchorEqual(toView: AppleView, constant: CGFloat = 0) {

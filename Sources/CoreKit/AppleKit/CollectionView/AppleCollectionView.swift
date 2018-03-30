@@ -7,20 +7,12 @@
 //
 
 #if os(iOS) || os(tvOS)
-
-    import UIKit.UICollectionView
-
-    public typealias AppleCollectionView = UICollectionView
-    public typealias AppleCollectionViewSource = UICollectionViewDataSource
-    public typealias AppleCollectionViewDelegate = UICollectionViewDelegate
-
+public typealias AppleCollectionView = UICollectionView
+public typealias AppleCollectionViewSource = UICollectionViewDataSource
+public typealias AppleCollectionViewDelegate = UICollectionViewDelegate
 #endif
 #if os(macOS)
-
-    import AppKit.NSCollectionView
-
-    public typealias AppleCollectionView = NSCollectionView
-    public typealias AppleCollectionViewSource = NSCollectionViewDataSource
-    public typealias AppleCollectionViewDelegate = NSCollectionViewDelegate
-
+public typealias AppleCollectionView = NSCollectionView
+public typealias AppleCollectionViewSource = NSCollectionViewDataSource
+public typealias AppleCollectionViewDelegate = NSCollectionViewDelegate
 #endif

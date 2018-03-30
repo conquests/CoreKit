@@ -6,8 +6,6 @@
 //  Copyright © 2017. Tibor Bödecs. All rights reserved.
 //
 
-import Foundation
-
 public extension URLRequest {
 
     public func cURLRepresentation(withURLSession session: URLSession? = nil,

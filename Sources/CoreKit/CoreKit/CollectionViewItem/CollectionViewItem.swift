@@ -8,8 +8,6 @@
 
 #if os(iOS) || os(tvOS) || os(macOS)
 
-    import CoreGraphics.CGGeometry
-
     open class CollectionViewItem: AppleCollectionViewItem {
 
         #if os(iOS)

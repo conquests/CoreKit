@@ -12,14 +12,8 @@ import XCTest
 class ObjectUniqueIdentifierTests: XCTestCase {
 
     func test() {
-
         XCTAssert("NSObject" == NSObject.uniqueIdentifier)
-
-        #if os(iOS) || os(tvOS)
-            XCTAssert("UIViewController" == AppleViewController.uniqueIdentifier)
-        #endif
-        #if os(macOS)
-            XCTAssert("NSViewController" == AppleViewController.uniqueIdentifier)
-        #endif
+        XCTAssert("NSDate" == NSDate.uniqueIdentifier)
+        XCTAssert("NSString" == NSString.uniqueIdentifier)
     }
 }

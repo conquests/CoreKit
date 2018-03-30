@@ -8,8 +8,6 @@
 
 #if os(macOS)
 
-import AppKit
-
 public extension AppleWindowController {
 
     public func crossfade(view: AppleView, duration: TimeInterval = 0.5) {

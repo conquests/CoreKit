@@ -8,9 +8,6 @@
 
 #if os(iOS) || os(tvOS)
 
-    import CoreGraphics
-    import Foundation.NSAttributedString
-
     public extension AppleFont {
 
         public func height(ofString string: String, constrainedToWidth width: CGFloat) -> CGFloat {
@@ -19,7 +16,6 @@
             let rect = string.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: attr, context: nil)
             return rect.size.height
         }
-
     }
 
 #endif

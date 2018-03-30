@@ -8,11 +8,6 @@
 
 #if os(iOS) || os(tvOS)
 
-    #if os(iOS)
-    import UIKit.UIApplication
-    import UIKit.UIGestureRecognizer
-    #endif
-
     open class NavigationViewController: AppleNavigationController {
 
         public init() {

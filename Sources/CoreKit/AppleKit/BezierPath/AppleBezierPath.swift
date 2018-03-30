@@ -8,15 +8,11 @@
 
 #if os(iOS) || os(tvOS) || os(watchOS)
 
-    import UIKit.UIBezierPath
-
     public typealias AppleBezierPath = UIBezierPath
 
 #endif
 
 #if os(macOS)
-
-    import AppKit.NSBezierPath
 
     public typealias AppleBezierPath = NSBezierPath
 

@@ -8,12 +8,9 @@
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
-    import Foundation.NSURLProtocol
-
     /*
      usage: URLProtocol.registerClass(URLRequestLoggerProtocol.self)
      */
-
     class URLRequestLoggerProtocol: URLProtocol {
 
         override class func canInit(with request: URLRequest) -> Bool {

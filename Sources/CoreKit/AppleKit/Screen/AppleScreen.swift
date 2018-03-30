@@ -8,8 +8,6 @@
 
 #if os(iOS) || os(tvOS)
 
-    import UIKit.UIScreen
-
     public typealias AppleScreen = UIScreen
 
     public extension AppleScreen {
@@ -20,9 +18,8 @@
     }
 
 #endif
-#if os(macOS)
 
-    import AppKit.NSScreen
+#if os(macOS)
 
     public typealias AppleScreen = NSScreen
 
@@ -32,6 +29,19 @@
 
         public static var `default`: AppleScreen {
             return AppleScreen.main! // swiftlint:disable:this force_unwrapping
+        }
+    }
+
+#endif
+
+#if os(watchOS)
+
+    // TODO: this one is really bad... but for now i'm fine with it.
+    public typealias AppleScreen = WKInterfaceDevice
+
+    public extension AppleScreen {
+        public static var `default`: AppleScreen {
+            return WKInterfaceDevice.current()
         }
     }
 

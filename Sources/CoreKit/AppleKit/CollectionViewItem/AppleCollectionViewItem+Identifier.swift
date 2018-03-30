@@ -8,10 +8,6 @@
 
 #if os(macOS) || os(iOS) || os(tvOS)
 
-    #if os(macOS)
-    import AppKit.NSUserInterfaceItemIdentification
-    #endif
-
     /**
      Identifier
      */

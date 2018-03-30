@@ -84,26 +84,20 @@ open class Promise<T> {
     private var callbacks: [Callback<T>] = []
     private var executionQueue: DispatchQueue!
 
-    /*
-     --------------------------------------------------------------------------------------------------------------
-     init
-     --------------------------------------------------------------------------------------------------------------
-     */
-
     public init(_ on: DispatchQueue = .global(qos: .userInitiated), _ state: State<T> = .pending) {
         self.executionQueue = on
         self.state = state
     }
 
-    public convenience init(on queue: DispatchQueue = .global(qos: .userInitiated), value: T) {
+    public convenience init(queue: DispatchQueue = .global(qos: .userInitiated), value: T) {
         self.init(queue, .fulfilled(value: value))
     }
 
-    public convenience init(on queue: DispatchQueue = .global(qos: .userInitiated), error: Error) {
+    public convenience init(queue: DispatchQueue = .global(qos: .userInitiated), error: Error) {
         self.init(queue, .rejected(error: error))
     }
 
-    public convenience init(on queue: DispatchQueue = .global(qos: .userInitiated),
+    public convenience init(queue: DispatchQueue = .global(qos: .userInitiated),
                             block: @escaping (_ fulfill: @escaping ValueBlock<T>,
         _ reject: @escaping ErrorBlock) throws -> Void) {
         self.init(queue)
@@ -132,94 +126,54 @@ open class Promise<T> {
         }
     }
 
-    /*
-     --------------------------------------------------------------------------------------------------------------
-     then
-     --------------------------------------------------------------------------------------------------------------
-     */
-
     @discardableResult
-    public func then(on queue: DispatchQueue? = nil,
+    private func then(queue: DispatchQueue? = nil,
                      success: @escaping ValueBlock<T>,
                      failure: @escaping ErrorBlock) -> Promise<T> {
         let executionQueue = queue ?? self.executionQueue ?? .main
-
-        //        let callback = self.callbacks.last
-        //        callback?.queue
-
-        self.addCallbacks(on: executionQueue, onFulfilled: success, onRejected: failure)
+        self.addCallbacks(queue: executionQueue, onFulfilled: success, onRejected: failure)
         return self
-//        return Promise<T>(on: self.executionQueue) { fulfill, reject in
-//            self.addCallbacks(
-//                on: executionQueue,
-//                onFulfilled: { value in
-//                    fulfill(value)
-//                    success(value)
-//            }, onRejected: { error in
-//                reject(error)
-//                failure(error)
-//            }
-//            )
-//        }
-    }
-
-    /*
-     --------------------------------------------------------------------------------------------------------------
-     success && failure
-     --------------------------------------------------------------------------------------------------------------
-     */
-
-    @discardableResult
-    public func success(on queue: DispatchQueue? = nil, _ success: @escaping ValueBlock<T>) -> Promise<T> {
-        // swiftlint:disable:next trailing_closure
-        return self.then(on: queue, success: success, failure: { _ in })
     }
 
     @discardableResult
-    public func failure(on queue: DispatchQueue? = nil, _ failure: @escaping ErrorBlock) -> Promise<T> {
-        return self.then(on: queue, success: { _ in }, failure: failure)
-    }
-
-    /*
-     --------------------------------------------------------------------------------------------------------------
-     flatMap && map
-     --------------------------------------------------------------------------------------------------------------
-     */
-
-    @discardableResult
-    public func flatMap<U>(on queue: DispatchQueue? = nil, _ f: @escaping ((T) -> Promise<U>)) -> Promise<U> {
-
+    public func then<U>(queue: DispatchQueue? = nil, _ f: @escaping ((T) -> Promise<U>)) -> Promise<U> {
+        
         let executionQueue = queue ?? self.executionQueue ?? .main
-
-        return Promise<U>(on: self.executionQueue) { fulfill, reject in
+        
+        return Promise<U>(queue: self.executionQueue) { fulfill, reject in
             self.addCallbacks(
-                on: executionQueue,
-                onFulfilled: { value in f(value).then(on: queue, success: fulfill, failure: reject) },
+                queue: executionQueue,
+                onFulfilled: { value in f(value).then(queue: queue, success: fulfill, failure: reject) },
                 onRejected: reject
             )
         }
     }
-
+    
     @discardableResult
-    public func map<U>(on queue: DispatchQueue? = nil, _ f: @escaping ((T) throws -> U)) -> Promise<U> {
-
+    public func thenMap<U>(queue: DispatchQueue? = nil, _ f: @escaping ((T) throws -> U)) -> Promise<U> {
+        
         let executionQueue = queue ?? self.executionQueue ?? .main
-
-        return self.flatMap(on: executionQueue) { value -> Promise<U> in
+        
+        return self.then(queue: executionQueue) { value -> Promise<U> in
             do {
-                return Promise<U>(on: self.executionQueue, value: try f(value))
+                return Promise<U>(queue: self.executionQueue, value: try f(value))
             }
             catch {
-                return Promise<U>(on: self.executionQueue, error: error)
+                return Promise<U>(queue: self.executionQueue, error: error)
             }
         }
     }
 
-    /*
-     --------------------------------------------------------------------------------------------------------------
-     state updates
-     --------------------------------------------------------------------------------------------------------------
-     */
+    @discardableResult
+    public func onSuccess(queue: DispatchQueue? = nil, _ success: @escaping ValueBlock<T>) -> Promise<T> {
+        // swiftlint:disable:next trailing_closure
+        return self.then(queue: queue, success: success, failure: { _ in })
+    }
+
+    @discardableResult
+    public func onFailure(queue: DispatchQueue? = nil, _ failure: @escaping ErrorBlock) -> Promise<T> {
+        return self.then(queue: queue, success: { _ in }, failure: failure)
+    }
 
     private func updateState(_ state: State<T>) {
         guard self.isPending else {
@@ -236,12 +190,6 @@ open class Promise<T> {
     public func fulfill(_ value: T) {
         self.updateState(.fulfilled(value: value))
     }
-
-    /*
-     --------------------------------------------------------------------------------------------------------------
-     values
-     --------------------------------------------------------------------------------------------------------------
-     */
 
     public var isPending: Bool {
         return !self.isFulfilled && !self.isRejected
@@ -267,13 +215,7 @@ open class Promise<T> {
         }
     }
 
-    /*
-     --------------------------------------------------------------------------------------------------------------
-     helpers
-     --------------------------------------------------------------------------------------------------------------
-     */
-
-    private func addCallbacks(on queue: DispatchQueue,
+    private func addCallbacks(queue: DispatchQueue,
                               onFulfilled: @escaping ValueBlock<T>,
                               onRejected: @escaping ErrorBlock) {
         let callback = Callback(queue: queue, onSuccess: onFulfilled, onFailure: onRejected)
@@ -299,13 +241,12 @@ open class Promise<T> {
             self.callbacks.removeAll()
         }
     }
-
 }
 
 extension Promise {
 
     public func validate(_ condition: @escaping (T) -> Bool) -> Promise<T> {
-        return self.map { value -> T in
+        return self.thenMap { value -> T in
             guard condition(value) else {
                 throw PromiseError.validation
             }
@@ -323,7 +264,7 @@ extension Promise {
             for promise in promises {
                 promise.then(success: { value in
                     if !promises.contains(where: { $0.isRejected || $0.isPending }) {
-                        fulfill(promises.flatMap { $0.value })
+                        fulfill(promises.compactMap { $0.value })
                     }
                 }, failure: reject)
             }
@@ -341,7 +282,7 @@ extension Promise {
     @discardableResult
     public static func timeout<T>(_ timeout: Double) -> Promise<T> {
         return Promise<T> { _, reject in
-            Promise<T>.delay(timeout).success { _ in
+            Promise<T>.delay(timeout).onSuccess { _ in
                 reject(PromiseError.timeout)
             }
         }
@@ -350,7 +291,9 @@ extension Promise {
     @discardableResult
     public static func race<T>(_ promises: [Promise<T>]) -> Promise<T> {
         return Promise<T> { fulfill, reject in
-            guard !promises.isEmpty else { fatalError("Could not race empty promises array") }
+            guard !promises.isEmpty else {
+                fatalError("Could not race empty promises array")
+            }
             for promise in promises {
                 promise.then(success: fulfill, failure: reject)
             }
@@ -371,8 +314,8 @@ extension Promise {
     }
 
     @discardableResult
-    public func always(on queue: DispatchQueue? = nil, _ block: @escaping () -> Void) -> Promise<T> {
-        return self.then(on: queue, success: { _ in block() }, failure: { _ in block() })
+    public func always(queue: DispatchQueue? = nil, _ block: @escaping () -> Void) -> Promise<T> {
+        return self.then(queue: queue, success: { _ in block() }, failure: { _ in block() })
     }
 
     @discardableResult
@@ -403,7 +346,7 @@ extension Promise {
         return Promise<T> { fulfill, reject in
             generate()
                 .recover { _ in
-                    return self.delay(delay).flatMap { _ in
+                    return self.delay(delay).then { _ in
                         return self.retry(times: times - 1, delay: delay, generate: generate)
                     }
                 }

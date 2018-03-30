@@ -6,8 +6,6 @@
 //  Copyright © 2017. Tibor Bödecs. All rights reserved.
 //
 
-import Foundation
-
 // swiftlint:disable line_length
 public extension Data {
 

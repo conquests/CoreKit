@@ -6,10 +6,7 @@
 //  Copyright © 2017. Tibor Bödecs. All rights reserved.
 //
 
-#if os(iOS) || os(tvOS)
-
-import CoreGraphics.CGGeometry
-import UIKit.UIGraphics
+#if os(iOS) || os(tvOS) || os(watchOS)
 
 public extension AppleImage {
 
@@ -29,6 +26,7 @@ public extension AppleImage {
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         let page = pdf.page(at: 1)
         page?.drawContextIn(rect: CGRect(origin: .zero, size: size))
+    
         return UIGraphicsGetImageFromCurrentImageContext()
     }
 

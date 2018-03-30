@@ -8,10 +8,7 @@
 
 #if os(iOS) || os(tvOS)
 
-import CoreGraphics
 import Accelerate
-
-import UIKit.UIScreen
 
 public extension AppleImage {
     // swiftlint:disable force_unwrapping cyclomatic_complexity function_body_length
@@ -68,7 +65,7 @@ public extension AppleImage {
         }
 
         let epsilon = CGFloat(Float.ulpOfOne)
-        let screenScale = UIScreen.main.scale
+        let screenScale = AppleScreen.pixelScale
         let imageRect = CGRect(origin: .zero, size: size)
         var effectImage = self
 

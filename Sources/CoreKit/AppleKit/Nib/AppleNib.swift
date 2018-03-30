@@ -9,10 +9,8 @@
 #if os(macOS) || os(iOS) || os(tvOS)
 
     #if os(macOS)
-        import AppKit.NSNib
         public typealias AppleNib = NSNib
     #else
-        import UIKit.UINib
         public typealias AppleNib = UINib
     #endif
 

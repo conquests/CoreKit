@@ -8,8 +8,6 @@
 
 #if os(iOS) || os(tvOS) || os(macOS)
 
-    import CoreGraphics.CGGeometry
-
     open class CollectionViewSource: AppleObject {
 
         private var indexPathSelected = false
@@ -226,6 +224,117 @@
             //        (item as! CollectionViewItem).setHighlight(false)
         }
         #endif
+        
+        // MARK: AppleScrollViewDelegate
+
+        #if os(iOS)
+        public func scrollViewDidScroll(_ scrollView: AppleScrollView) {
+            guard let collectionView = scrollView as? CollectionView else {
+                return
+            }
+            collectionView.scrollViewDelegate?.scrollViewDidScroll?(scrollView)
+        }
+        
+        public func scrollViewDidZoom(_ scrollView: AppleScrollView) {
+            guard let collectionView = scrollView as? CollectionView else {
+                return
+            }
+            collectionView.scrollViewDelegate?.scrollViewDidZoom?(scrollView)
+        }
+        
+        public func scrollViewWillBeginDragging(_ scrollView: AppleScrollView) {
+            guard let collectionView = scrollView as? CollectionView else {
+                return
+            }
+            collectionView.scrollViewDelegate?.scrollViewWillBeginDragging?(scrollView)
+        }
+        
+        public func scrollViewWillEndDragging(_ scrollView: AppleScrollView,
+                                              withVelocity velocity: CGPoint,
+                                              targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+            guard let collectionView = scrollView as? CollectionView else {
+                return
+            }
+            collectionView.scrollViewDelegate?.scrollViewWillEndDragging?(scrollView,
+                                                                          withVelocity: velocity,
+                                                                          targetContentOffset: targetContentOffset)
+        }
+        
+        public func scrollViewDidEndDragging(_ scrollView: AppleScrollView, willDecelerate decelerate: Bool) {
+            guard let collectionView = scrollView as? CollectionView else {
+                return
+            }
+            collectionView.scrollViewDelegate?.scrollViewDidEndDragging?(scrollView, willDecelerate: decelerate)
+        }
+        
+        public func scrollViewWillBeginDecelerating(_ scrollView: AppleScrollView) {
+            guard let collectionView = scrollView as? CollectionView else {
+                return
+            }
+            collectionView.scrollViewDelegate?.scrollViewWillBeginDecelerating?(scrollView)
+        }
+        
+        public func scrollViewDidEndDecelerating(_ scrollView: AppleScrollView) {
+            guard let collectionView = scrollView as? CollectionView else {
+                return
+            }
+            collectionView.scrollViewDelegate?.scrollViewDidEndDecelerating?(scrollView)
+        }
+        
+        public func scrollViewDidEndScrollingAnimation(_ scrollView: AppleScrollView) {
+            guard let collectionView = scrollView as? CollectionView else {
+                return
+            }
+            collectionView.scrollViewDelegate?.scrollViewDidEndScrollingAnimation?(scrollView)
+        }
+        
+        public func viewForZooming(in scrollView: AppleScrollView) -> AppleView? {
+            guard let collectionView = scrollView as? CollectionView else {
+                return nil
+            }
+            return collectionView.scrollViewDelegate?.viewForZooming?(in: scrollView)
+        }
+        
+        public func scrollViewWillBeginZooming(_ scrollView: AppleScrollView, with view: AppleView?) {
+            guard let collectionView = scrollView as? CollectionView else {
+                return
+            }
+            collectionView.scrollViewDelegate?.scrollViewWillBeginZooming?(scrollView, with: view)
+        }
+        
+        public func scrollViewDidEndZooming(_ scrollView: AppleScrollView,
+                                            with view: AppleView?,
+                                            atScale scale: CGFloat) {
+            guard let collectionView = scrollView as? CollectionView else {
+                return
+            }
+            collectionView.scrollViewDelegate?.scrollViewDidEndZooming?(scrollView,
+                                                                        with: view,
+                                                                        atScale: scale)
+        }
+        
+        public func scrollViewShouldScrollToTop(_ scrollView: AppleScrollView) -> Bool {
+            guard let collectionView = scrollView as? CollectionView else {
+                return true
+            }
+            return collectionView.scrollViewDelegate?.scrollViewShouldScrollToTop?(scrollView) ?? true
+        }
+        
+        public func scrollViewDidScrollToTop(_ scrollView: AppleScrollView) {
+            guard let collectionView = scrollView as? CollectionView else {
+                return
+            }
+            collectionView.scrollViewDelegate?.scrollViewDidScrollToTop?(scrollView)
+        }
+        
+        @available(iOSApplicationExtension 11.0, *)
+        public func scrollViewDidChangeAdjustedContentInset(_ scrollView: AppleScrollView) {
+            guard let collectionView = scrollView as? CollectionView else {
+                return
+            }
+            collectionView.scrollViewDelegate?.scrollViewDidChangeAdjustedContentInset?(scrollView)
+        }
+        #endif
     }
 
     extension CollectionViewSource: AppleCollectionViewDelegateFlowLayout {
@@ -240,35 +349,27 @@
             guard let data = self.itemAt(indexPath) else {
                 return .zero
             }
-            return data.size(data: data.value, indexPath: indexPath, grid: self.grid(indexPath.section))
+            let grid = self.grid(indexPath.section)
+            
+            return data.size(data: data.value, indexPath: indexPath, grid: grid, view: collectionView)
         }
 
         public func collectionView(_ collectionView: AppleCollectionView,
                                    layout collectionViewLayout: AppleCollectionViewLayout,
                                    insetForSectionAt section: Int) -> AppleEdgeInsets {
-            if let insets = self.grid(section).insets {
-                return insets
-            }
-            let margin = self.grid(section).margin
-            return AppleEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
+            return self.grid(section).margin
         }
 
         public func collectionView(_ collectionView: AppleCollectionView,
                                    layout collectionViewLayout: AppleCollectionViewLayout,
                                    minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            if let spacing = self.grid(section).lineSpacing {
-                return spacing
-            }
-            return self.grid(section).padding
+            return self.grid(section).verticalPadding
         }
 
         public func collectionView(_ collectionView: AppleCollectionView,
                                    layout collectionViewLayout: AppleCollectionViewLayout,
                                    minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-            if let spacing = self.grid(section).itemSpacing {
-                return spacing
-            }
-            return self.grid(section).padding
+            return self.grid(section).horizontalPadding
         }
 
         public func collectionView(_ collectionView: AppleCollectionView,
@@ -278,7 +379,8 @@
                 return .zero
             }
             let indexPath = AppleIndexPath(item: -1, section: section)
-            return data.size(data: data.value, indexPath: indexPath, grid: self.grid(section))
+            let grid = self.grid(section)
+            return data.size(data: data.value, indexPath: indexPath, grid: grid, view: collectionView)
         }
 
         public func collectionView(_ collectionView: AppleCollectionView,
@@ -288,8 +390,12 @@
                 return .zero
             }
             let indexPath = AppleIndexPath(item: -1, section: section)
-            return data.size(data: data.value, indexPath: indexPath, grid: self.grid(section))
+            let grid = self.grid(section)
+            return data.size(data: data.value, indexPath: indexPath, grid: grid, view: collectionView)
         }
     }
+    
+    
 
 #endif
+

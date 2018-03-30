@@ -8,14 +8,10 @@
 
 #if os(iOS) || os(tvOS)
 
-    import UIKit.UIWindow
-
     public typealias AppleWindow = UIWindow
 
 #endif
 #if os(macOS)
-
-    import AppKit.NSFont
 
     public typealias AppleWindow = NSWindow
 

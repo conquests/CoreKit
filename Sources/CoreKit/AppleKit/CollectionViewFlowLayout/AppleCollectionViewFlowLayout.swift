@@ -7,18 +7,10 @@
 //
 
 #if os(iOS) || os(tvOS)
-
-    import UIKit.UICollectionView
-
-    public typealias AppleCollectionViewFlowLayout = UICollectionViewFlowLayout
-    public typealias AppleCollectionViewDelegateFlowLayout = UICollectionViewDelegateFlowLayout
-
+public typealias AppleCollectionViewFlowLayout = UICollectionViewFlowLayout
+public typealias AppleCollectionViewDelegateFlowLayout = UICollectionViewDelegateFlowLayout
 #endif
 #if os(macOS)
-
-    import AppKit.NSCollectionView
-
-    public typealias AppleCollectionViewFlowLayout = NSCollectionViewFlowLayout
-    public typealias AppleCollectionViewDelegateFlowLayout = NSCollectionViewDelegateFlowLayout
-
+public typealias AppleCollectionViewFlowLayout = NSCollectionViewFlowLayout
+public typealias AppleCollectionViewDelegateFlowLayout = NSCollectionViewDelegateFlowLayout
 #endif

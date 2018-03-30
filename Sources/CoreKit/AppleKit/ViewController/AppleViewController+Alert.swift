@@ -8,8 +8,6 @@
 
 #if os(iOS)
 
-    import UIKit.UIViewController
-
     public extension UIViewController {
 
         public func showAlert(title: String,

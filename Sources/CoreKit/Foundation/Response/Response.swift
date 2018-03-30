@@ -6,8 +6,6 @@
 //  Copyright © 2017. Tibor Bödecs. All rights reserved.
 //
 
-import Foundation
-
 public enum ResponseError: Error {
     case cancelled
     case invalidStatusCode(Int)

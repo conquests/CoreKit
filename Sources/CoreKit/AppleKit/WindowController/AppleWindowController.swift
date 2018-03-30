@@ -7,9 +7,5 @@
 //
 
 #if os(macOS)
-
-    import AppKit.NSWindowController
-
-    public typealias AppleWindowController = NSWindowController
-
+public typealias AppleWindowController = NSWindowController
 #endif

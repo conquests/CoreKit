@@ -8,10 +8,6 @@
 
 #if os(iOS) || os(tvOS) || os(macOS)
 
-    #if os(iOS)
-    import UIKit.UIApplication
-    #endif
-
     open class ViewController: AppleViewController {
 
         public required init?(coder aDecoder: AppleCoder) {

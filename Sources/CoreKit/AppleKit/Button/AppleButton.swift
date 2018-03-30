@@ -8,14 +8,10 @@
 
 #if os(iOS) || os(tvOS)
 
-    import UIKit.UIButton
-
     public typealias AppleButton = UIButton
 
 #endif
 #if os(macOS)
-
-    import AppKit.NSButton
 
     public typealias AppleButton = NSButton
 

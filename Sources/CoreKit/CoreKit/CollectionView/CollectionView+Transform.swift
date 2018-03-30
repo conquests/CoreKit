@@ -8,8 +8,6 @@
 
 #if os(iOS)
 
-    import Foundation.NSIndexSet
-
     public extension CollectionView {
 
         func transformTo(_ source: CollectionViewSource) {
