@@ -62,7 +62,6 @@ public class Response: NSObject {
         case .download:
             self.task = self.session.downloadTask(with: self.request)
         case .upload:
-            // swiftlint:disable:next force_unwrapping
             self.task = self.session.uploadTask(with: self.request, from: self.request.httpBody!)
         case .stream:
             guard let url = self.request.url, let host = url.host, let port = url.port else {
@@ -82,7 +81,6 @@ public class Response: NSObject {
         }
 
         self.validations.forEach { block in block(self.result, self.error, self.reject) }
-        // swiftlint:disable:next force_unwrapping
         self.fulfill?(self.result!)
     }
     #if os(iOS) || os(tvOS) || os(watchOS) || os(macOS)

@@ -13,7 +13,7 @@
         #if os(iOS)
         open var scrollViewDelegate: AppleScrollViewDelegate?
         #endif
-        
+
         open var source: CollectionViewSource? = nil {
             didSet {
                 self.source?.register(itemsFor: self)

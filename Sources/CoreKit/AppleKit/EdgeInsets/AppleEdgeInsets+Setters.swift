@@ -7,19 +7,19 @@
 //
 
 public extension AppleEdgeInsets {
-    
+
     public mutating func setAll(_ size: CGFloat) {
         self.top = size
         self.left = size
         self.bottom = size
         self.right = size
     }
-    
+
     public mutating func setVertical(_ size: CGFloat) {
         self.top = size
         self.bottom = size
     }
-    
+
     public mutating func setHorizontal(_ size: CGFloat) {
         self.left = size
         self.right = size

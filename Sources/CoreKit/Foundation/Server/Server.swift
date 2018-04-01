@@ -6,8 +6,6 @@
 //  Copyright © 2017. Tibor Bödecs. All rights reserved.
 //
 
-// swiftlint:disable force_unwrapping line_length
-
 extension Int {
     var megabyte: Int { return self * 1_048_576 }
 }

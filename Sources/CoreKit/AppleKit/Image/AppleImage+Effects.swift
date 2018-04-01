@@ -11,7 +11,6 @@
 import Accelerate
 
 public extension AppleImage {
-    // swiftlint:disable force_unwrapping cyclomatic_complexity function_body_length
 
     public func applyLightEffect() -> AppleImage? {
         return applyBlurWithRadius(30, tintColor: AppleColor(white: 1.0, alpha: 0.3), saturationDeltaFactor: 1.8)

@@ -47,7 +47,6 @@
          */
         public static func createFromNib(owner: Any? = nil, options: [AnyHashable: Any]? = nil) -> AppleView {
             let name = String(describing: self)
-            // swiftlint:disable:next force_cast
             return AppleBundle.main.loadNibNamed(name, owner: owner, options: options)?.last as! AppleView
         }
 

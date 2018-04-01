@@ -86,15 +86,12 @@ public extension AppleColor {
         var color = self
 
         if color.cgColor.numberOfComponents < 4 {
-            // swiftlint:disable:next force_unwrapping
             let c = color.cgColor.components!
             color = AppleColor(red: c[0], green: c[0], blue: c[0], alpha: c[1])
         }
-        // swiftlint:disable:next force_unwrapping
         if color.cgColor.colorSpace!.model != .rgb {
             return "#FFFFFF"
         }
-        // swiftlint:disable:next force_unwrapping
         let c = color.cgColor.components!
         return String(format: "#%02X%02X%02X", Int(c[0]*255.0), Int(c[1]*255.0), Int(c[2]*255.0))
     }

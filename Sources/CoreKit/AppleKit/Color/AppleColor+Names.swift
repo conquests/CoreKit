@@ -7,7 +7,7 @@
 //
 
 public extension AppleColor {
-    
+
     public static var chestnutRose: AppleColor { return AppleColor(hex: 0xd24d57) }
     public static var pomegranate: AppleColor { return AppleColor(hex: 0xf22613) }
     public static var thunderbird: AppleColor { return AppleColor(hex: 0xd91e18) }
@@ -108,4 +108,3 @@ public extension AppleColor {
     public static var cararra: AppleColor { return AppleColor(hex: 0xf2f1ef) }
     public static var silver: AppleColor { return AppleColor(hex: 0xbfbfbf) }
 }
-

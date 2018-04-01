@@ -45,12 +45,6 @@ open class Console {
         }
     }
 
-    /*
-     --------------------------------------------------------------------------------------------------------------
-     default
-     --------------------------------------------------------------------------------------------------------------
-     */
-
     public static let defaultName = "default"
 
     public static let `default` = Console(name: Console.defaultName)
@@ -59,11 +53,6 @@ open class Console {
         self.name = name
     }
 
-    /*
-     --------------------------------------------------------------------------------------------------------------
-     consoles
-     --------------------------------------------------------------------------------------------------------------
-     */
     public private(set) static var consoles: [Console] = [Console.default]
 
     public static func get(name: String) -> Console {
@@ -79,11 +68,6 @@ open class Console {
         return newConsole
     }
 
-    /*
-     --------------------------------------------------------------------------------------------------------------
-     dateFormatter
-     --------------------------------------------------------------------------------------------------------------
-     */
     private var _dateFormatter: DateFormatter?
 
     private var dateFormatter: DateFormatter {
@@ -93,15 +77,8 @@ open class Console {
             formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
             self._dateFormatter = formatter
         }
-        // swiftlint:disable:next force_unwrapping
         return self._dateFormatter!
     }
-
-    /*
-     --------------------------------------------------------------------------------------------------------------
-     log
-     --------------------------------------------------------------------------------------------------------------
-     */
 
     @discardableResult
     private func _log<T>(level: LogLevel,
@@ -134,7 +111,6 @@ open class Console {
             )
         #endif
         #if os(Linux)
-            // swiftlint:disable force_cast
             let dateString = self.dateFormatter.string(from: Date()) as! CVarArg
             let details = String(format: "[%@][%@][%@][%@:%d,%d].%@<%@(%d)>\n",
                                  dateString,
@@ -164,11 +140,6 @@ extension Console: CustomStringConvertible {
     }
 }
 
-/*
- --------------------------------------------------------------------------------------------------------------
- log methods
- --------------------------------------------------------------------------------------------------------------
- */
 public extension Console {
 
     @discardableResult
@@ -217,11 +188,6 @@ public extension Console {
     }
 }
 
-/*
- --------------------------------------------------------------------------------------------------------------
- default
- --------------------------------------------------------------------------------------------------------------
- */
 public extension Console {
 
     @discardableResult

@@ -13,15 +13,15 @@
     open class CollectionViewSection {
 
         public var grid: Grid?
-        public var header: CollectionViewDataProtocol?
-        public var footer: CollectionViewDataProtocol?
-        public var items: [CollectionViewDataProtocol]
+        public var header: CollectionViewViewModelProtocol?
+        public var footer: CollectionViewViewModelProtocol?
+        public var items: [CollectionViewViewModelProtocol]
         public var callback: CollectionViewCallback?
 
         public init(grid: Grid? = nil,
-                    header: CollectionViewDataProtocol? = nil,
-                    footer: CollectionViewDataProtocol? = nil,
-                    items: [CollectionViewDataProtocol] = [],
+                    header: CollectionViewViewModelProtocol? = nil,
+                    footer: CollectionViewViewModelProtocol? = nil,
+                    items: [CollectionViewViewModelProtocol] = [],
                     callback: CollectionViewCallback? = nil) {
             self.grid = grid
             self.header = header

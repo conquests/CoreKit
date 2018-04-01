@@ -8,13 +8,14 @@ import PackageDescription
 let excludePaths = [
                         "AppleKit",
                         "ARKit",
+                        "AVFoundation",
                         "CoreGraphics",
                         "CoreKit",
                         "CoreLocation",
                         "QuartzCore",
                         "SpriteKit",
                         "StoreKit",
-                        "WatchKit",
+                        "WatchKit"
                     ]
 
 let package = Package(

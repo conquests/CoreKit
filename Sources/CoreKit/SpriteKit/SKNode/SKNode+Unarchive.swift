@@ -23,7 +23,6 @@
 
             let archiver = NSKeyedUnarchiver(forReadingWith: sceneData)
             archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-            // swiftlint:disable:next force_cast
             let scene = archiver.decodeObject(forKey: NSKeyedArchiveRootObjectKey) as! SKScene
             archiver.finishDecoding()
             return scene

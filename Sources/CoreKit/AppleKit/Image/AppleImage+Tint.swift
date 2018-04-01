@@ -13,17 +13,14 @@ public extension AppleImage {
             let rect = CGRect(origin: .zero, size: self.size)
             UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
             self.draw(in: rect)
-            // swiftlint:disable:next force_unwrapping
             let context = UIGraphicsGetCurrentContext()!
             context.setBlendMode(.sourceIn)
             context.setFillColor(color.cgColor)
             context.fill(rect)
             let newImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-            // swiftlint:disable:next force_unwrapping
             return newImage!
         #else
-            // swiftlint:disable:next force_cast
             let tinted = self.copy() as! AppleImage
             tinted.lockFocus()
             color.set()

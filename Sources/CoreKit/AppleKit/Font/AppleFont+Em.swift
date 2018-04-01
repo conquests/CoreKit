@@ -51,4 +51,3 @@ public extension AppleFont {
     public var em_4: AppleFont { return self.em(scale: 4) }
     public var em_5: AppleFont { return self.em(scale: 5) }
 }
-

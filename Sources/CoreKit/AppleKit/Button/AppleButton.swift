@@ -18,7 +18,6 @@
     public extension AppleButton {
 
         public func setTextColor(color: AppleColor) {
-            // swiftlint:disable:next force_cast
             let attributedString = self.attributedTitle.mutableCopy() as! NSMutableAttributedString
             let range = NSRange(location: 0, length: attributedString.length)
             attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)

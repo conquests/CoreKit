@@ -53,7 +53,6 @@ open class Request {
     }
 
     public enum Header {
-        // swiftlint:disable nesting
         private enum Keys: String {
             case ContentDisposition = "Content-Disposition"
             case Accept             = "Accept"

@@ -9,7 +9,7 @@
 #if os(macOS) || os(iOS) || os(tvOS) || os(watchOS)
 
 public extension AppleScreen {
-    
+
     /**
      Returns the size of a real pixel based on the default screen's scale factor.
      

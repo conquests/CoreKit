@@ -15,7 +15,7 @@
          
          Example: collectionView.register(reusableItem: MyItem.self)
          */
-        public func register<T: AppleCollectionViewItem>(reusableItem: T.Type) {
+        public func register<T: AppleCollectionViewCell>(reusableItem: T.Type) {
             T.register(itemFor: self)
         }
 
@@ -24,22 +24,22 @@
          
          Example: collectionView.dequeue(indexPath: indexPath) as MyItem
          */
-        func dequeue<T: AppleCollectionViewItem>(indexPath: AppleIndexPath) -> T {
-            return T.reuse(self, indexPath: indexPath) as! T // swiftlint:disable:this force_cast
+        func dequeue<T: AppleCollectionViewCell>(indexPath: AppleIndexPath) -> T {
+            return T.reuse(self, indexPath: indexPath) as! T
         }
 
         /**
          Register a collection view item for reuse with a kind
          */
-        public func register<T: AppleCollectionViewItem>(reusableItem: T.Type, kind: AppleCollectionViewItem.Kind) {
+        public func register<T: AppleCollectionViewCell>(reusableItem: T.Type, kind: AppleCollectionViewCell.Kind) {
             T.register(itemFor: self, kind: kind)
         }
 
         /**
          Reuse a generic collection view item with a kind
          */
-        func dequeue<T: AppleCollectionViewItem>(indexPath: AppleIndexPath, kind: AppleCollectionViewItem.Kind) -> T {
-            return T.reuse(self, indexPath: indexPath, kind: kind) as! T // swiftlint:disable:this force_cast
+        func dequeue<T: AppleCollectionViewCell>(indexPath: AppleIndexPath, kind: AppleCollectionViewCell.Kind) -> T {
+            return T.reuse(self, indexPath: indexPath, kind: kind) as! T
         }
     }
 

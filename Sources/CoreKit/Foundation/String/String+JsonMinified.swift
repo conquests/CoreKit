@@ -10,7 +10,7 @@
  http://github.com/getify/JSON.minify
  */
 public extension String {
-    // swiftlint:disable force_unwrapping
+
     public var jsonMinified: String {
 
         var result: [String]  = []
@@ -19,9 +19,7 @@ public extension String {
         var inLineComment = false
         var index = 0
         var right = ""
-        // swiftlint:disable:next force_try
         let backslash = try! NSRegularExpression(pattern: "(\\\\)*$", options: [.caseInsensitive])
-        // swiftlint:disable:next force_try
         let tokenizer = try! NSRegularExpression(pattern: "\"|(\\/\\*)|(\\*\\/)|(\\/\\/)|\n|\r",
                                                  options: [.caseInsensitive]) //strings, comments, newlines
         let matches = tokenizer.matches(in: self, options: [], range: NSRange(location: 0, length: self.count))

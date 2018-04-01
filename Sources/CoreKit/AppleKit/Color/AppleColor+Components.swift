@@ -9,7 +9,6 @@
 extension AppleColor {
 
     private var rgbColorSpace: AppleColor {
-        // swiftlint:disable:next force_unwrapping
         let c = self.cgColor.components!
         let a = self.cgColor.alpha
 
@@ -116,8 +115,8 @@ extension AppleColor {
                             bitsPerComponent: 8,
                             bytesPerRow: 4,
                             space: rgbColorSpace,
-                            bitmapInfo: bitmapInfo)! // swiftlint:disable:this force_unwrapping
-        // swiftlint:disable:next force_unwrapping
+                            bitmapInfo: bitmapInfo)!
+
         ref.setFillColor(opaqueColor!)
         ref.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
 
@@ -147,5 +146,3 @@ extension AppleColor {
 
     }
 }
-
-

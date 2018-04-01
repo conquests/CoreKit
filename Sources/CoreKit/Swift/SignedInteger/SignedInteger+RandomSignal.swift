@@ -12,6 +12,6 @@ public extension SignedInteger {
      Randomly returns either 1 or -1
      */
     public static var randomSignal: Self {
-        return ((rndm(to: 1) == 1) ? 1 : -1) as! Self // swiftlint:disable:this force_cast
+        return ((rndm(to: 1) == 1) ? 1 : -1) as! Self
     }
 }

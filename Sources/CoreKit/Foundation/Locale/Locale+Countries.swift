@@ -17,7 +17,6 @@ public extension Locale {
         var locales = [(code: String, name: String)]()
 
         for regionCode in Locale.isoRegionCodes {
-            // swiftlint:disable:next force_unwrapping
             let name = Locale.current.localizedString(forRegionCode: regionCode)!
             let code = regionCode
             let locale = (code: code, name: name)

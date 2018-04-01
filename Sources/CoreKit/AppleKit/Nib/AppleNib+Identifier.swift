@@ -21,10 +21,8 @@
 
             public init(_ object: UniqueIdentifier.Type) {
                 #if os(macOS)
-                    // swiftlint:disable:next force_unwrapping
                     self.init(rawValue: AppleNib.Name(rawValue: object.uniqueIdentifier))!
                 #else
-                    // swiftlint:disable:next force_unwrapping
                     self.init(rawValue: object.uniqueIdentifier)!
                 #endif
             }

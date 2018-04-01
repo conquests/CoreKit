@@ -45,7 +45,7 @@ public extension Thread {
             return String(format: "%p", Thread.current)
         #endif
         #if os(Linux)
-            return String(format: "%p", Thread.current as! CVarArg)  // swiftlint:disable:this force_cast
+            return String(format: "%p", Thread.current as! CVarArg)
         #endif
     }
 

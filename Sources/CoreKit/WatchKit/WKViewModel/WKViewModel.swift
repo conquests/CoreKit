@@ -1,5 +1,5 @@
 //
-//  WKViewModel.swift
+//  WKTableViewModel.swift
 //  CoreKit
 //
 //  Created by Tibor Bödecs on 2018. 01. 28..
@@ -8,40 +8,44 @@
 
 #if os(watchOS)
 
-    public protocol WKViewModelProtocol {
+    public protocol WKTableViewModelProtocol {
         var type: String { get }
         func configure(item: Any)
         func callback(index: Int)
     }
 
-    open class WKViewModel<View, Model>: WKViewModelProtocol where View: WKInterfaceTableItem, Model: Any {
-        
-        public var type: String { return View.objectName }
-        public var view: View.Type { return View.self }
+    open class WKTableViewModel<Cell, Model>: WKTableViewModelProtocol where Cell: WKTableCell, Model: Any {
+
         public var model: Model
+        public var cell: Cell.Type { return Cell.self }
+        public var type: String { return Cell.objectName }
+
         public var callbackBlock: ((Int, Model) -> Void)?
 
         public init(_ model: Model, callback: ((Int, Model) -> Void)? = nil) {
             self.model = model
             self.callbackBlock = callback
         }
-        
+
+        // MARK: - WKCellModelProtocol
+
         public func configure(item: Any) {
-            guard let cell = item as? View else {
+            guard let cell = item as? Cell else {
                 return
-                
             }
-            self.configure(view: cell, model: self.model)
+            self.configure(cell: cell, model: self.model)
         }
-        
-        open func configure(view: View, model: Model) {
-            
-        }
-        
+
         public func callback(index: Int) {
             self.callback(index: index, model: self.model)
         }
-        
+
+        // MARK: - API
+
+        open func configure(cell: Cell, model: Model) {
+
+        }
+
         open func callback(index: Int, model: Model) {
             self.callbackBlock?(index, model)
         }

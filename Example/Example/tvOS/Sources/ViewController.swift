@@ -6,7 +6,6 @@
 //  Copyright © 2017. Tibor Bödecs. All rights reserved.
 //
 
-import UIKit
 import CoreKit
 
 class ViewController: UIViewController {
@@ -16,28 +15,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let grid = Grid(view: self.collectionView)
+        let grid = Grid()
         let source = CollectionViewSource(grid: grid)
         let section = CollectionViewSection()
 
-        section.header = StringData("header")
-        section.footer = StringData("footer")
+        section.header = StringViewModel("header")
+        section.footer = StringViewModel("footer")
 
         for i in stride(from: 0, to: 100, by: 1) {
-            let data = StringData("item \(i)")
+            let data = StringViewModel("item \(i)")
 
             section.items.append(data)
         }
 
         source.sections.append(section)
-
         self.collectionView.source = source
-
         self.collectionView.reloadData()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

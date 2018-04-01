@@ -22,7 +22,6 @@ public extension CGPDFPage {
 
         context.saveGState()
 
-        // swiftlint:disable:next force_unwrapping
         let image = UIGraphicsGetImageFromCurrentImageContext()!
         var transform = CGAffineTransform.identity
         transform = transform.scaledBy(x: 1.0, y: -1.0)

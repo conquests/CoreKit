@@ -9,20 +9,20 @@
 #if os(iOS)
 
     open class TableView: UITableView {
-        
+
         var source: TableViewSource! {
             didSet {
                 self.source.register(tableView: self)
-                
+
                 self.dataSource = self.source
                 self.delegate = self.source
             }
         }
-        
+
         public override init(frame: CGRect, style: UITableViewStyle) {
             super.init(frame: frame, style: style)
         }
-        
+
         public required init?(coder aDecoder: NSCoder) {
             super.init(coder: aDecoder)
         }

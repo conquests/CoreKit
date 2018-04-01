@@ -18,32 +18,35 @@
 
     public extension AppleBezierPath {
 
+        public convenience init(arcCenter: CGPoint,
+                                radius: CGFloat,
+                                startAngle: CGFloat,
+                                endAngle: CGFloat,
+                                clockwise: Bool) {
+            self.init()
+            self.appendArc(withCenter: arcCenter,
+                           radius: radius,
+                           startAngle: startAngle,
+                           endAngle: endAngle,
+                           clockwise: clockwise)
+        }
+
         public var cgPath: CGPath {
             let path = CGMutablePath()
-            if self.elementCount == 0 {
-                return path
-            }
-            var didClosePath = false
-
-            for i in 0...self.elementCount - 1 {
-                var points = [NSPoint](repeating: NSPoint.zero, count: 3)
-                switch self.element(at: i, associatedPoints: &points) {
-                case .moveToBezierPathElement:
-                    path.move(to: points[0])
-                case .lineToBezierPathElement:
-                    path.addLine(to: points[0])
-                case .curveToBezierPathElement:
-                    path.addCurve(to: points[0], control1: points[1], control2: points[2])
-                case .closePathBezierPathElement:
-                    path.closeSubpath()
-                    didClosePath = true
+            var points = [CGPoint](repeating: .zero, count: 3)
+            for i in 0 ..< self.elementCount {
+                let type = self.element(at: i, associatedPoints: &points)
+                switch type {
+                case .moveToBezierPathElement: path.move(to: points[0])
+                case .lineToBezierPathElement: path.addLine(to: points[0])
+                case .curveToBezierPathElement: path.addCurve(to: points[2], control1: points[0], control2: points[1])
+                case .closePathBezierPathElement: path.closeSubpath()
                 }
-            }
-            if !didClosePath {
-                path.closeSubpath()
             }
             return path
         }
+        
+        
     }
 
 #endif

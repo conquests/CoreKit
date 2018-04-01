@@ -12,13 +12,11 @@ public extension AppleImage {
         #if os(iOS) || os(tvOS) || os(watchOS)
             let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
             UIGraphicsBeginImageContext(rect.size)
-            // swiftlint:disable:next force_unwrapping
             let context = UIGraphicsGetCurrentContext()!
             context.setFillColor(color.cgColor)
             context.fill(rect)
             let newImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-            // swiftlint:disable:next force_unwrapping
             return newImage!
         #else
             let image = AppleImage(size: NSSize(width: 1, height: 1))
@@ -39,10 +37,9 @@ public extension AppleImage {
                                 bitsPerComponent: 8,
                                 bytesPerRow: 4,
                                 space: colorSpace,
-                                bitmapInfo: info)! // swiftlint:disable:this force_unwrapping
+                                bitmapInfo: info)!
 
         #if os(iOS) || os(tvOS) || os(watchOS)
-            // swiftlint:disable:next force_unwrapping
             let image = self.cgImage!
             context.draw(image, in: CGRect(x: 0, y: 0, width: 1, height: 1))
         #else

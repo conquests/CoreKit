@@ -15,7 +15,6 @@
 
         convenience init(nib: AppleNib.Identifier, bundle: AppleBundle? = .main) {
             #if os(macOS)
-                // swiftlint:disable:next force_unwrapping
                 self.init(nibNamed: nib.rawValue, bundle: bundle)!
             #else
                 self.init(nibName: nib.rawValue, bundle: bundle)

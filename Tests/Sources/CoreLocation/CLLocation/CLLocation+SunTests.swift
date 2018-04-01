@@ -7,21 +7,16 @@
 //
 
 import XCTest
-#if os(iOS) || os(macOS) || os(watchOS) || os(tvOS)
-    import CoreLocation
-#endif
+import CoreLocation
 @testable import CoreKit
 
 class CLLocationSunTests: XCTestCase {
 
-    #if os(iOS) || os(macOS) || os(watchOS) || os(tvOS)
     func test() {
 
         let date = Date()
         let zone = TimeZoneLocation.local
         let location = CLLocation(latitude: zone.latitude, longitude: zone.longitude)
-
-        print("------------")
 
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(identifier: "Europe/Budapest")
@@ -32,10 +27,6 @@ class CLLocationSunTests: XCTestCase {
             print(key + ": " + formatter.string(from: value))
         }
 
-        print("------------")
-
         XCTAssert(true)
     }
-    #endif
-
 }

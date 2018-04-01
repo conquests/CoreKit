@@ -9,9 +9,9 @@
 #if os(iOS)
 
     class TableViewSection {
-        var items: [TableViewDataProtocol] = []
-        var header: TableViewDataProtocol?
-        var footer: TableViewDataProtocol?
+        var items: [TableViewViewModelProtocol] = []
+        var header: TableViewViewModelProtocol?
+        var footer: TableViewViewModelProtocol?
     }
 
 #endif

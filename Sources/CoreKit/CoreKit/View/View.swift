@@ -8,7 +8,7 @@
 
 #if os(iOS) || os(tvOS) || os(macOS)
 
-    public class View: AppleView {
+    open class View: AppleView {
 
         public init() {
             super.init(frame: .zero)
@@ -31,7 +31,7 @@
         /**
          Public override point for initialization
          */
-        public func initialize() {
+        open func initialize() {
             self.translatesAutoresizingMaskIntoConstraints = false
         }
 }

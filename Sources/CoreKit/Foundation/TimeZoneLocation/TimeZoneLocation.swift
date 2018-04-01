@@ -6,8 +6,6 @@
 //  Copyright © 2017. Tibor Bödecs. All rights reserved.
 //
 
-// swiftlint:disable force_unwrapping line_length
-
 public struct TimeZoneLocation {
     public let identifier: String
     public let latitude: Double

@@ -63,6 +63,6 @@ public extension TimeZone {
     }
 
     public init(abbrevation: TimeZone.Abbrevation) {
-        self.init(abbreviation: abbrevation.rawValue.uppercased())! //swiftlint:disable:this force_unwrapping
+        self.init(abbreviation: abbrevation.rawValue.uppercased())!
     }
 }

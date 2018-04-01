@@ -149,7 +149,7 @@ public extension CLLocation {
         let year = calendar.component(.year, from: date)
         let month = calendar.component(.month, from: date)
         let day = calendar.component(.day, from: date)
-        let newDate = calendar.date(from: dcs)! //swiftlint:disable:this force_unwrapping
+        let newDate = calendar.date(from: dcs)!
 
         let official = self.calc(year: year, month: month, day: day, lat: lat, lon: lon, altit: (-35.0 / 60.0), upper_limb: 1)
         let officialRise = newDate.addingTimeInterval(official.rise * .hour)

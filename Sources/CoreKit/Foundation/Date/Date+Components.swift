@@ -8,8 +8,6 @@
 
 public extension Date {
 
-    // swiftlint:disable force_unwrapping
-
     public var year: Int {
         return Calendar.current.component(.year, from: self)
     }

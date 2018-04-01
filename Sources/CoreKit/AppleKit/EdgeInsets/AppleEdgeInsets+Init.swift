@@ -35,7 +35,7 @@ public extension AppleEdgeInsets {
     public static func all(_ size: CGFloat) -> AppleEdgeInsets {
         return AppleEdgeInsets(top: size, left: size, bottom: size, right: size)
     }
-    
+
     #if os(macOS)
     public static var zero: AppleEdgeInsets {
         return AppleEdgeInsets.all(0)

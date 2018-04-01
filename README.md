@@ -2,12 +2,6 @@
 
 Ultimate cross platform framework to create appleOS apps.
 
-
-### Dependencies
-
-* SwiftLint v0.23.1+
-
-
 ### Usage
 
 You can use CoreKit with the following package managers:

@@ -14,7 +14,6 @@ public extension String {
      - returns: The initials from the string
      */
     public var initials: String {
-        // swiftlint:disable:next force_unwrapping
         return self.split(separator: " ").map { String($0.first!) }.joined()
     }
 

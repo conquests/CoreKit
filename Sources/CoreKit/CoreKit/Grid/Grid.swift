@@ -13,11 +13,11 @@
         open var columns: CGFloat
         open var margin: AppleEdgeInsets
         open var padding: AppleEdgeInsets
-        
+
         public var verticalMargin: CGFloat {
             return self.margin.top + self.margin.bottom
         }
-        
+
         public var horizontalMargin: CGFloat {
             return self.margin.left + self.margin.right
         }
@@ -26,7 +26,7 @@
         public var verticalPadding: CGFloat {
             return self.padding.top + self.padding.bottom
         }
-        
+
         // inter item spacing
         public var horizontalPadding: CGFloat {
             return self.padding.left + self.padding.right
@@ -60,12 +60,12 @@
 
             return (width / self.columns * items).evenRounded
         }
-        
+
         open func height(for view: AppleView, items: CGFloat = 1, gaps: CGFloat? = nil) -> CGFloat {
             let gaps = gaps ?? items - 1
-            
+
             let height = view.bounds.size.height - self.verticalMargin - self.verticalPadding * gaps
-            
+
             return (height / self.columns * items).evenRounded
         }
     }

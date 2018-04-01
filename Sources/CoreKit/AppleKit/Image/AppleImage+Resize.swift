@@ -14,7 +14,6 @@ public extension AppleImage {
             self.draw(in: CGRect(origin: .zero, size: size))
             let newImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-            // swiftlint:disable:next force_unwrapping
             return newImage!
         #else
             let img = AppleImage(size: size)

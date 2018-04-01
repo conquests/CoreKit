@@ -6,7 +6,6 @@
 //  Copyright © 2017. Tibor Bödecs. All rights reserved.
 //
 
-import Cocoa
 import CoreKit
 
 class ViewController: NSViewController {
@@ -15,31 +14,22 @@ class ViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let grid = Grid(view: self.collectionView)
+        
+        let grid = Grid()
         let source = CollectionViewSource(grid: grid)
         let section = CollectionViewSection()
 
-        section.header = StringData("header")
-        section.footer = StringData("footer")
+        section.header = StringViewModel("header")
+        section.footer = StringViewModel("footer")
 
         for i in stride(from: 0, to: 100, by: 1) {
-            let data = StringData("item \(i)")
+            let data = StringViewModel("item \(i)")
 
             section.items.append(data)
         }
 
         source.sections.append(section)
-
         self.collectionView.source = source
-
         self.collectionView.reloadData()
     }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
-
 }

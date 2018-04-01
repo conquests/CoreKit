@@ -8,7 +8,6 @@
 
 import Dispatch
 
-// swiftlint:disable strict_fileprivate
 open class Promise<T> {
 
     public enum PromiseError: Error {
@@ -137,9 +136,9 @@ open class Promise<T> {
 
     @discardableResult
     public func then<U>(queue: DispatchQueue? = nil, _ f: @escaping ((T) -> Promise<U>)) -> Promise<U> {
-        
+
         let executionQueue = queue ?? self.executionQueue ?? .main
-        
+
         return Promise<U>(queue: self.executionQueue) { fulfill, reject in
             self.addCallbacks(
                 queue: executionQueue,
@@ -148,12 +147,12 @@ open class Promise<T> {
             )
         }
     }
-    
+
     @discardableResult
     public func thenMap<U>(queue: DispatchQueue? = nil, _ f: @escaping ((T) throws -> U)) -> Promise<U> {
-        
+
         let executionQueue = queue ?? self.executionQueue ?? .main
-        
+
         return self.then(queue: executionQueue) { value -> Promise<U> in
             do {
                 return Promise<U>(queue: self.executionQueue, value: try f(value))
@@ -166,7 +165,6 @@ open class Promise<T> {
 
     @discardableResult
     public func onSuccess(queue: DispatchQueue? = nil, _ success: @escaping ValueBlock<T>) -> Promise<T> {
-        // swiftlint:disable:next trailing_closure
         return self.then(queue: queue, success: success, failure: { _ in })
     }
 
@@ -326,7 +324,6 @@ extension Promise {
     @discardableResult
     public func recover(recovery: @escaping (Error) throws -> Promise<T>) -> Promise<T> {
         return Promise<T> { fulfill, reject in
-            // swiftlint:disable:next trailing_closure
             self.then(success: fulfill, failure: { error in
                 do {
                     try recovery(error).then(success: fulfill, failure: reject)

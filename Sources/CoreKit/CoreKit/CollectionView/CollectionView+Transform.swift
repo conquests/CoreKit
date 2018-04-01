@@ -20,7 +20,7 @@
                     self.insertSections(indexes as IndexSet)
                 }
 
-            }, completion: { (_) -> Void in
+            }, completion: { _ -> Void in
                 // do nothing...
             })
         }

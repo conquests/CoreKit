@@ -34,7 +34,6 @@ public extension Dictionary where Key: ExpressibleByStringLiteral, Key: Comparab
 
         var components: [(String, String)] = []
 
-        // swiftlint:disable:next force_cast force_unwrapping
         self.keys.sorted(by: <).forEach { components += queryComponents($0 as! String, self[$0]!) }
 
         return (components.map { "\($0)=\($1)" } as [String]).joined(separator: "&")

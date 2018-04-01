@@ -68,13 +68,11 @@ public extension URLRequest {
 
             if let credentials = credentialStorage.credentials(for: protectionSpace)?.values {
                 for credential in credentials {
-                    // swiftlint:disable:next force_unwrapping
                     components.append("-u \(credential.user!):\(credential.password!)")
                 }
             }
             else {
                 if let credential = credential {
-                    // swiftlint:disable:next force_unwrapping
                     components.append("-u \(credential.user!):\(credential.password!)")
                 }
             }

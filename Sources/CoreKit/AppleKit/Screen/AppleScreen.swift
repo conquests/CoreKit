@@ -28,7 +28,7 @@
         public var bounds: CGRect { return NSRectToCGRect(self.visibleFrame) }
 
         public static var `default`: AppleScreen {
-            return AppleScreen.main! // swiftlint:disable:this force_unwrapping
+            return AppleScreen.main!
         }
     }
 

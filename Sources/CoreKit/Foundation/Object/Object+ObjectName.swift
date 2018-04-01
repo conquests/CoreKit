@@ -38,7 +38,6 @@ public extension NSObject {
     }
 
     public static var objectName: String {
-        // swiftlint:disable:next force_unwrapping
         return String(NSStringFromClass(self).split(separator: ".").last!)
     }
 

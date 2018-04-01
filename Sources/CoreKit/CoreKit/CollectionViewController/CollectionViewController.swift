@@ -63,6 +63,7 @@
                     self?.collectionView.collectionViewLayout.invalidateLayout()
             })
         }
+
         #endif
     }
 
