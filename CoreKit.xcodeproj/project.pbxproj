@@ -608,6 +608,7 @@
 		16C1AE2E1F86236C0043EE48 /* URLRequestLoggerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1AE2C1F86236C0043EE48 /* URLRequestLoggerProtocol.swift */; };
 		16C1AE2F1F86236C0043EE48 /* URLRequestLoggerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1AE2C1F86236C0043EE48 /* URLRequestLoggerProtocol.swift */; };
 		16C1AE301F86236C0043EE48 /* URLRequestLoggerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C1AE2C1F86236C0043EE48 /* URLRequestLoggerProtocol.swift */; };
+		16C8E2E02072C6C700829486 /* URLSessionDataTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C8E2DF2072C6C700829486 /* URLSessionDataTaskOperation.swift */; };
 		16D38C0A1F8F644A0075B8A9 /* AppleCollectionView+Reuse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D38C091F8F644A0075B8A9 /* AppleCollectionView+Reuse.swift */; };
 		16D38C0B1F8F644A0075B8A9 /* AppleCollectionView+Reuse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D38C091F8F644A0075B8A9 /* AppleCollectionView+Reuse.swift */; };
 		16D38C0C1F8F644A0075B8A9 /* AppleCollectionView+Reuse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16D38C091F8F644A0075B8A9 /* AppleCollectionView+Reuse.swift */; };
@@ -1002,6 +1003,7 @@
 		16C1AE291F8621C40043EE48 /* Logo.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Logo.pdf; sourceTree = "<group>"; };
 		16C1AE2A1F8621C40043EE48 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = "<group>"; };
 		16C1AE2C1F86236C0043EE48 /* URLRequestLoggerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestLoggerProtocol.swift; sourceTree = "<group>"; };
+		16C8E2DF2072C6C700829486 /* URLSessionDataTaskOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskOperation.swift; sourceTree = "<group>"; };
 		16D38C091F8F644A0075B8A9 /* AppleCollectionView+Reuse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppleCollectionView+Reuse.swift"; sourceTree = "<group>"; };
 		16D38C0E1F8F65240075B8A9 /* AppleCollectionViewCell+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppleCollectionViewCell+Identifier.swift"; sourceTree = "<group>"; };
 		16D38C131F8F65440075B8A9 /* AppleCollectionViewCell+Kind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppleCollectionViewCell+Kind.swift"; sourceTree = "<group>"; };
@@ -1663,6 +1665,7 @@
 		1691BA381F7B90DB00B1FAB3 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				16C8E2DE2072C6B300829486 /* URLSessionDataTaskOperation */,
 				164C28AB200E3D4F006779F3 /* TimeZone */,
 				1685E3441F7BE394008FE932 /* URLRequest */,
 				1685E3401F7BE30A008FE932 /* Request */,
@@ -2176,6 +2179,14 @@
 				16C1AE2C1F86236C0043EE48 /* URLRequestLoggerProtocol.swift */,
 			);
 			path = URLRequestLoggerProtocol;
+			sourceTree = "<group>";
+		};
+		16C8E2DE2072C6B300829486 /* URLSessionDataTaskOperation */ = {
+			isa = PBXGroup;
+			children = (
+				16C8E2DF2072C6C700829486 /* URLSessionDataTaskOperation.swift */,
+			);
+			path = URLSessionDataTaskOperation;
 			sourceTree = "<group>";
 		};
 		16E9E0811F8269E5008175C0 /* IndexPath */ = {
@@ -2956,6 +2967,7 @@
 				1640E9BD1F7BD47800156F37 /* Date+Components.swift in Sources */,
 				1640E9AC1F7BD22B00156F37 /* Data+DecodeJson.swift in Sources */,
 				16A8B6A01F7BF9CC00D4471A /* AppleColor+Hex.swift in Sources */,
+				16C8E2E02072C6C700829486 /* URLSessionDataTaskOperation.swift in Sources */,
 				1655D6641F8F689600127471 /* AppleNib+Init.swift in Sources */,
 				1685E3601F7BE640008FE932 /* SKProduct+LocalizedPrice.swift in Sources */,
 				16A10D52206FC25F0079AC2D /* AppleLabel+LongShadow.swift in Sources */,
