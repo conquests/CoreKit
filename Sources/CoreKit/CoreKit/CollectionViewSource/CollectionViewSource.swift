@@ -20,11 +20,16 @@
         public init(grid: Grid = Grid(),
                     sections: [CollectionViewSection] = [],
                     callback: CollectionViewCallback? = nil) {
+
             self.grid = grid
             self.sections = sections
             self.callback = callback
 
             super.init()
+        }
+
+        public func add(_ section: CollectionViewSection) {
+            self.sections.append(section)
         }
     }
 

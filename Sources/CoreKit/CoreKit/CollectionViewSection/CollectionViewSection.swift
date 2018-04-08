@@ -29,6 +29,10 @@
             self.items = items
             self.callback = callback
         }
+
+        public func add(_ item: CollectionViewViewModelProtocol) {
+            self.items.append(item)
+        }
     }
 
 #endif

@@ -1,4 +1,4 @@
 corekit-swift:
-  image: swiftdocker/swift
+  image: swiftdocker/swift:4.1
   volumes:
     - .:/app

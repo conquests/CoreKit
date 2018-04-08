@@ -24,10 +24,12 @@ open class URLSessionDataTaskOperation: Operation {
     open override var isExecuting: Bool {
         return self._executing
     }
-    
-    open override var isConcurrent : Bool {
+
+    #if !os(Linux)
+    open override var isConcurrent: Bool {
         return true
     }
+    #endif
     
     public init(session: URLSession, request: URLRequest, completion: @escaping URLSessionDataTaskCompletion) {
         self.session = session

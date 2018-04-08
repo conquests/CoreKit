@@ -239,6 +239,7 @@
 		1685E3671F7BE7C6008FE932 /* SKNode+Unarchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685E3651F7BE7C6008FE932 /* SKNode+Unarchive.swift */; };
 		1685E3681F7BE7C6008FE932 /* SKNode+Unarchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685E3651F7BE7C6008FE932 /* SKNode+Unarchive.swift */; };
 		1685E3691F7BE7C6008FE932 /* SKNode+Unarchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685E3651F7BE7C6008FE932 /* SKNode+Unarchive.swift */; };
+		1686C593207A39A000DD31FC /* FileManager+Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1686C592207A39A000DD31FC /* FileManager+Paths.swift */; };
 		1687733E1F7BEC380031C8D6 /* SKCircularProgressNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687733D1F7BEC380031C8D6 /* SKCircularProgressNode.swift */; };
 		1687733F1F7BEC990031C8D6 /* SKCircularProgressNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687733D1F7BEC380031C8D6 /* SKCircularProgressNode.swift */; };
 		168773401F7BEC9A0031C8D6 /* SKCircularProgressNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687733D1F7BEC380031C8D6 /* SKCircularProgressNode.swift */; };
@@ -904,6 +905,7 @@
 		1685E3591F7BE4E7008FE932 /* SKEmitterNode+Unarchive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKEmitterNode+Unarchive.swift"; sourceTree = "<group>"; };
 		1685E35F1F7BE640008FE932 /* SKProduct+LocalizedPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKProduct+LocalizedPrice.swift"; sourceTree = "<group>"; };
 		1685E3651F7BE7C6008FE932 /* SKNode+Unarchive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKNode+Unarchive.swift"; sourceTree = "<group>"; };
+		1686C592207A39A000DD31FC /* FileManager+Paths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Paths.swift"; sourceTree = "<group>"; };
 		1687733D1F7BEC380031C8D6 /* SKCircularProgressNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKCircularProgressNode.swift; sourceTree = "<group>"; };
 		1687A5151F7B723B00456E62 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		1687A51B1F7B76B300456E62 /* Result_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result_Tests.swift; sourceTree = "<group>"; };
@@ -1508,6 +1510,14 @@
 			path = SKNode;
 			sourceTree = "<group>";
 		};
+		1686C591207A399300DD31FC /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				1686C592207A39A000DD31FC /* FileManager+Paths.swift */,
+			);
+			path = FileManager;
+			sourceTree = "<group>";
+		};
 		1687733C1F7BEB420031C8D6 /* AppleKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1665,6 +1675,7 @@
 		1691BA381F7B90DB00B1FAB3 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				1686C591207A399300DD31FC /* FileManager */,
 				16C8E2DE2072C6B300829486 /* URLSessionDataTaskOperation */,
 				164C28AB200E3D4F006779F3 /* TimeZone */,
 				1685E3441F7BE394008FE932 /* URLRequest */,
@@ -3040,6 +3051,7 @@
 				168C418E201DBAF6002C06D5 /* WKTableSource.swift in Sources */,
 				16C1AE2D1F86236C0043EE48 /* URLRequestLoggerProtocol.swift in Sources */,
 				1685E3521F7BE3DA008FE932 /* Request.swift in Sources */,
+				1686C593207A39A000DD31FC /* FileManager+Paths.swift in Sources */,
 				16E9F4721F7B0A1400A78E33 /* Array+Unique.swift in Sources */,
 				161A0A3B1FA34C9F00DFBCC0 /* CLLocation+Bearing.swift in Sources */,
 				1640E9751F7BCA1C00156F37 /* CGPoint+CenterRect.swift in Sources */,
