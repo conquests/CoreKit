@@ -240,6 +240,12 @@
 		1685E3681F7BE7C6008FE932 /* SKNode+Unarchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685E3651F7BE7C6008FE932 /* SKNode+Unarchive.swift */; };
 		1685E3691F7BE7C6008FE932 /* SKNode+Unarchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685E3651F7BE7C6008FE932 /* SKNode+Unarchive.swift */; };
 		1686C593207A39A000DD31FC /* FileManager+Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1686C592207A39A000DD31FC /* FileManager+Paths.swift */; };
+		1686C594207A3D2400DD31FC /* FileManager+Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1686C592207A39A000DD31FC /* FileManager+Paths.swift */; };
+		1686C595207A3D2500DD31FC /* FileManager+Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1686C592207A39A000DD31FC /* FileManager+Paths.swift */; };
+		1686C596207A3D2600DD31FC /* FileManager+Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1686C592207A39A000DD31FC /* FileManager+Paths.swift */; };
+		1686C597207A3D6F00DD31FC /* URLSessionDataTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C8E2DF2072C6C700829486 /* URLSessionDataTaskOperation.swift */; };
+		1686C598207A3D7000DD31FC /* URLSessionDataTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C8E2DF2072C6C700829486 /* URLSessionDataTaskOperation.swift */; };
+		1686C599207A3D7100DD31FC /* URLSessionDataTaskOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C8E2DF2072C6C700829486 /* URLSessionDataTaskOperation.swift */; };
 		1687733E1F7BEC380031C8D6 /* SKCircularProgressNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687733D1F7BEC380031C8D6 /* SKCircularProgressNode.swift */; };
 		1687733F1F7BEC990031C8D6 /* SKCircularProgressNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687733D1F7BEC380031C8D6 /* SKCircularProgressNode.swift */; };
 		168773401F7BEC9A0031C8D6 /* SKCircularProgressNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687733D1F7BEC380031C8D6 /* SKCircularProgressNode.swift */; };
@@ -3178,6 +3184,7 @@
 				1691BA401F7B910F00B1FAB3 /* String+Localized.swift in Sources */,
 				16E9F4841F7B0A1500A78E33 /* FloatingPoint+Random.swift in Sources */,
 				161E285B1F7E67DE000CE260 /* CollectionViewSource.swift in Sources */,
+				1686C597207A3D6F00DD31FC /* URLSessionDataTaskOperation.swift in Sources */,
 				16A8B6971F7BF86100D4471A /* AppleColor.swift in Sources */,
 				1640E9501F7BC60B00156F37 /* SignedInteger+RandomSignal.swift in Sources */,
 				168C41A7201DBDF9002C06D5 /* TableView.swift in Sources */,
@@ -3197,6 +3204,7 @@
 				161E28541F7E6206000CE260 /* AppleCollectionViewCell+Reuse.swift in Sources */,
 				16F912FA1F7D11CB0010C889 /* AppleViewController+Hierarchy.swift in Sources */,
 				163334221F92013300EC5D49 /* Encodable+EncodeJson.swift in Sources */,
+				1686C594207A3D2400DD31FC /* FileManager+Paths.swift in Sources */,
 				16A8B6AB1F7BFAC600D4471A /* AppleColor+Components.swift in Sources */,
 				16A8B6D31F7C01B900D4471A /* AppleImage+Tint.swift in Sources */,
 				16A1D1DD1F7C366E000D76EC /* AppleView.swift in Sources */,
@@ -3398,6 +3406,7 @@
 				1691BA411F7B911000B1FAB3 /* String+Localized.swift in Sources */,
 				16E9F48F1F7B0A1600A78E33 /* FloatingPoint+Random.swift in Sources */,
 				161E285C1F7E67DE000CE260 /* CollectionViewSource.swift in Sources */,
+				1686C598207A3D7000DD31FC /* URLSessionDataTaskOperation.swift in Sources */,
 				16A8B6981F7BF86100D4471A /* AppleColor.swift in Sources */,
 				1640E9511F7BC60B00156F37 /* SignedInteger+RandomSignal.swift in Sources */,
 				168C41A8201DBDF9002C06D5 /* TableView.swift in Sources */,
@@ -3417,6 +3426,7 @@
 				161E28551F7E6206000CE260 /* AppleCollectionViewCell+Reuse.swift in Sources */,
 				16F912FB1F7D11CB0010C889 /* AppleViewController+Hierarchy.swift in Sources */,
 				163334231F92013400EC5D49 /* Encodable+EncodeJson.swift in Sources */,
+				1686C595207A3D2500DD31FC /* FileManager+Paths.swift in Sources */,
 				16A8B6AC1F7BFAC600D4471A /* AppleColor+Components.swift in Sources */,
 				16A8B6D41F7C01B900D4471A /* AppleImage+Tint.swift in Sources */,
 				16A1D1DE1F7C366E000D76EC /* AppleView.swift in Sources */,
@@ -3618,6 +3628,7 @@
 				1691BA421F7B911100B1FAB3 /* String+Localized.swift in Sources */,
 				16E9F49A1F7B0A1600A78E33 /* FloatingPoint+Random.swift in Sources */,
 				161E285D1F7E67DE000CE260 /* CollectionViewSource.swift in Sources */,
+				1686C599207A3D7100DD31FC /* URLSessionDataTaskOperation.swift in Sources */,
 				16A8B6991F7BF86100D4471A /* AppleColor.swift in Sources */,
 				1640E9521F7BC60B00156F37 /* SignedInteger+RandomSignal.swift in Sources */,
 				168C41A9201DBDF9002C06D5 /* TableView.swift in Sources */,
@@ -3637,6 +3648,7 @@
 				161E28561F7E6206000CE260 /* AppleCollectionViewCell+Reuse.swift in Sources */,
 				16F912FC1F7D11CB0010C889 /* AppleViewController+Hierarchy.swift in Sources */,
 				163334241F92013500EC5D49 /* Encodable+EncodeJson.swift in Sources */,
+				1686C596207A3D2600DD31FC /* FileManager+Paths.swift in Sources */,
 				16A8B6AD1F7BFAC600D4471A /* AppleColor+Components.swift in Sources */,
 				16A8B6D51F7C01B900D4471A /* AppleImage+Tint.swift in Sources */,
 				16A1D1DF1F7C366E000D76EC /* AppleView.swift in Sources */,
