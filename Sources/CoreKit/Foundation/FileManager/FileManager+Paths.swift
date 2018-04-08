@@ -16,7 +16,7 @@ public extension FileManager {
             return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
         }
 
-        static var cache: String {
+        public static var cache: String {
             return NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first!
         }
     }
