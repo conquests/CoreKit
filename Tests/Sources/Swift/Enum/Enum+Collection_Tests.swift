@@ -22,11 +22,15 @@ class EnumCollectionTests: XCTestCase {
         case b
     }
 
-    func test() {
-
+    func test_allValues() {
         XCTAssert(IntEnum.allValues.count == 3)
         XCTAssert(StringEnum.allValues.count == 2)
         XCTAssert(IntEnum.allValues.map { $0.rawValue } == [0, 1, 2])
         XCTAssert(StringEnum.allValues.map { $0.rawValue } == ["test", "b"])
+    }
+
+    func test_count() {
+        XCTAssert(IntEnum.count == 3)
+        XCTAssert(StringEnum.count == 2)
     }
 }

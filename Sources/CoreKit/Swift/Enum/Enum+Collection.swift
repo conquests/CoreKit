@@ -22,6 +22,11 @@ public protocol EnumCollection: Hashable {
      Returns all the values of the enum
      */
     static var allValues: [Self] { get }
+
+    /**
+     Returns the count of allValues
+     */
+    static var count: Int { get }
 }
 
 /**
@@ -55,4 +60,8 @@ public extension EnumCollection {
         return Array(Self.cases())
     }
 
+    /**
+     Returns the count of allValues
+     */
+    static var count: Int { return allValues.count }
 }
